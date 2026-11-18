@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHEMLAB - Kimyoviy tenglashtirish</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">⚗️</div>
+      <div>
+        <h1>CHEM<span>LAB</span></h1>
+        <p>KIMYO BILIMDONI</p>
+      </div>
+    </div>
+
+    <div class="header-stats">
+      <div class="mini-stat">🏆 Ball: <b id="score">0</b></div>
+      <div class="mini-stat">⭐ Rekord: <b id="record">0</b></div>
+      <button id="soundBtn" class="icon-button" title="Ovoz">🔊</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="intro">
+      <div class="intro-icon">🧪</div>
+      <div>
+        <h2>Kimyoviy tenglashtirish</h2>
+        <p>Atomlar sonini tenglashtiring va barcha 30 ta misolni yeching!</p>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <span>⏱️</span>
+        <div><small>Qolgan vaqt</small><strong id="timer">05:00</strong></div>
+      </div>
+      <div class="stat-card">
+        <span>🎯</span>
+        <div><small>To‘g‘ri javob</small><strong id="correctCount">0</strong></div>
+      </div>
+      <div class="stat-card">
+        <span>📚</span>
+        <div><small>Daraja</small><strong id="level">1</strong></div>
+      </div>
+      <div class="stat-card">
+        <span>🧩</span>
+        <div><small>Misol</small><strong id="questionNumber">1 / 30</strong></div>
+      </div>
+    </section>
+
+    <section class="game-card">
+      <div class="game-heading">
+        <div>
+          <span class="eyebrow">LABORATORIYA TOPSHIRIG‘I</span>
+          <h2>Tenglamani tenglashtiring</h2>
+        </div>
+        <span id="difficultyTag" class="difficulty">Oson</span>
+      </div>
+
+      <div class="progress-info">
+        <span>O‘yin jarayoni</span>
+        <span id="progressText">0 / 30</span>
+      </div>
+      <div class="progress-track">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+
+      <div class="equation-panel">
+        <div class="equation-label">⚛️ KIMYOVIY REAKSIYA</div>
+        <div id="equation" class="equation"></div>
+      </div>
+
+      <div class="atom-title">
+        <h3>Atomlar hisoblagichi</h3>
+        <span>Har ikki tomondagi atomlar soni</span>
+      </div>
+
+      <div class="atom-grid">
+        <div class="atom-card">
+          <small>CHAP TOMON</small>
+          <strong id="leftAtoms">0</strong>
+          <span>atom</span>
+        </div>
+        <div class="versus">VS</div>
+        <div class="atom-card">
+          <small>O‘NG TOMON</small>
+          <strong id="rightAtoms">0</strong>
+          <span>atom</span>
+        </div>
+      </div>
+
+      <div id="balanceMessage" class="balance-message">
+        Koeffitsiyentlarni kiriting.
+      </div>
+
+      <div id="feedback" class="feedback">
+        🧪 Javobingizni kiriting va tekshirish tugmasini bosing.
+      </div>
+
+      <div class="buttons">
+        <button id="hintBtn" class="button hint-button">💡 Maslahat</button>
+        <button id="checkBtn" class="button check-button">✓ Tekshirish</button>
+      </div>
+
+      <div class="buttons secondary-buttons">
+        <button id="restartBtn" class="button restart-button">↻ Qayta boshlash</button>
+        <button id="nextBtn" class="button next-button" disabled>Keyingi misol →</button>
+      </div>
+
+      <div class="bottom-info">
+        <span>🏅 Natija: <b id="questionProgress">0 / 30</b></span>
+        <span>🎁 Mukofot: <b id="reward">Boshlovchi</b></span>
+      </div>
+    </section>
+
+    <section class="help-card">
+      <div>
+        <h3>📖 Qanday o‘ynaladi?</h3>
+        <p>Formulalar oldidagi kataklarga koeffitsiyent kiriting. Chap va o‘ng tomondagi atomlar soni teng bo‘lishi kerak.</p>
+      </div>
+      <button id="helpBtn" class="button help-button">Qoidalar</button>
+    </section>
+
+  </main>
+
+  <footer>⚗️ CHEMLAB — Kimyoni qiziqarli tarzda o‘rganing!</footer>
+
+  <div id="resultModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-emoji">🏆</div>
+      <h2 id="resultTitle">O‘yin tugadi!</h2>
+      <p id="resultText">Natijangiz tayyor.</p>
+      <div class="result-score">
+        <small>Yig‘ilgan ball</small>
+        <strong id="finalScore">0</strong>
+      </div>
+      <button id="playAgainBtn" class="button check-button full-button">Qayta o‘ynash</button>
+    </div>
+  </div>
+
+  <div id="helpModal" class="modal">
+    <div class="modal-box">
+      <button id="closeHelpBtn" class="close-button">✕</button>
+      <div class="modal-emoji">📘</div>
+      <h2>O‘yin qoidalari</h2>
+      <p class="rules-text">
+        1. Har bir formula oldidagi katakka son kiriting.<br><br>
+        2. Chap va o‘ng tomondagi atomlar sonini teng qiling.<br><br>
+        3. Tekshirish tugmasini bosing.<br><br>
+        4. To‘g‘ri javob uchun 10 ball olasiz.<br><br>
+        5. 30 ta misolni yechishga harakat qiling!
+      </p>
+      <button id="closeHelpBtn2" class="button check-button full-button">Tushunarli</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
